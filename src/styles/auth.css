@@ -1,0 +1,296 @@
+/* =================================================
+   AUTH LAYOUT — FOUNDATION
+================================================= */
+
+.auth-root {
+  min-height: 100vh;
+  width: 100%;
+
+  background: var(--color-bg);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: clamp(1.5rem, 4vw, 3rem);
+  box-sizing: border-box;
+}
+
+/* Secure card shell */
+.auth-shell {
+  width: 100%;
+  max-width: 420px;
+
+  background: var(--color-surface);
+  border-radius: 20px;
+
+  padding: clamp(1.75rem, 4vw, 2.25rem);
+
+  border: 1px solid var(--color-border);
+
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  animation: auth-enter 160ms ease-out;
+}
+
+/* =================================================
+   TYPOGRAPHY
+================================================= */
+
+.auth-shell h2 {
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.auth-shell p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* =================================================
+   FORMS
+================================================= */
+
+.auth-shell form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.auth-shell input {
+  width: 100%;
+  padding: 0.8rem 0.85rem;
+
+  background: var(--color-input-bg);
+  color: var(--color-text);
+
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+.auth-shell input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.55;
+  font-weight: 400;
+}
+
+.auth-shell input:focus {
+  outline: none;
+  border-color: #8a1c1c;
+  box-shadow: 0 0 0 2px rgba(138, 28, 28, 0.18);
+}
+
+/* =================================================
+   PASSWORD FIELD (EYE TOGGLE)
+================================================= */
+
+.auth-password {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.auth-password input {
+  padding-right: 2.6rem;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 0.6rem;
+
+  background: transparent;
+  border: none;
+
+  color: var(--color-text-muted);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  padding: 0;
+
+  transition: color 120ms ease;
+}
+
+.eye-btn:hover {
+  color: var(--color-text);
+}
+
+/* =================================================
+   COUNTRY DISPLAY (STATIC)
+================================================= */
+
+.auth-country {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  padding: 0.75rem 0.85rem;
+
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+
+  background: var(--color-input-bg);
+  font-size: 0.9rem;
+}
+
+.auth-country .flag {
+  font-size: 1.15rem;
+}
+
+/* =================================================
+   PRIMARY BUTTON
+================================================= */
+
+.auth-shell button[type="submit"] {
+  margin-top: 0.6rem;
+
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+
+  border: none;
+  background: #8a1c1c;
+  color: #ffffff;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: opacity 120ms ease;
+}
+
+.auth-shell button[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+.auth-shell button[type="submit"]:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* =================================================
+   PREMIUM CHECKBOX (TERMS)
+================================================= */
+
+.auth-check {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+
+  user-select: none;
+}
+
+.auth-check input {
+  display: none;
+}
+
+.auth-check .box {
+  width: 18px;
+  height: 18px;
+
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-input-bg);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 120ms ease;
+}
+
+.auth-check .box::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 3px;
+
+  background: #ffffff;
+  opacity: 0;
+  transform: scale(0.6);
+
+  transition: all 120ms ease;
+}
+
+.auth-check input:checked + .box {
+  background: #8a1c1c;
+  border-color: #8a1c1c;
+}
+
+.auth-check input:checked + .box::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* =================================================
+   LINKS & FOOTER
+================================================= */
+
+.auth-shell a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.auth-shell a:hover {
+  text-decoration: underline;
+}
+
+.auth-footer {
+  text-align: center;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+/* =================================================
+   ERROR STATE
+================================================= */
+
+.auth-error {
+  background: rgba(255, 0, 0, 0.08);
+  border: 1px solid rgba(255, 0, 0, 0.25);
+  color: #ffb3b3;
+
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+}
+
+/* =================================================
+   ENTRY ANIMATION
+================================================= */
+
+@keyframes auth-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =================================================
+   MOBILE
+================================================= */
+
+@media (max-width: 480px) {
+  .auth-root {
+    align-items: flex-start;
+    padding-top: 14vh;
+  }
+}

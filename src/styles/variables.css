@@ -1,0 +1,133 @@
+:root {
+  /* ===== Brand Colors ===== */
+  --color-brand: #8A1C1C; /* Oxblood */
+  
+  /* Semantic colors (never hardcode red/green in components) */
+  --color-success: #1f9d55;
+  --color-error: #d64545;
+  --color-warning: #e0a800;
+
+  /* ===== Typography ===== */
+  --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-loose: 1.7;
+
+  /* ===== Spacing ===== */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  /* ===== Radius ===== */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* ===== Motion ===== */
+  --transition-fast: 120ms ease;
+  --transition-normal: 180ms ease;
+}
+
+:root {
+
+  /* LIGHT MODE */
+  --surface-primary: #ffffff;
+
+  --surface-secondary: #f7f7f8;
+
+  --border-primary: rgba(0,0,0,0.08);
+
+}
+
+.dark {
+
+  /* DARK MODE */
+  --surface-primary: #121212;
+
+  --surface-secondary: #1a1a1a;
+
+  --border-primary: rgba(255,255,255,0.08);
+
+}:root {
+
+  /* =========================
+     TREBETTA LIGHT MODE
+  ========================= */
+
+  /* surfaces */
+  --surface-primary: #ffffff;
+  --surface-secondary: #f7f7f8;
+  --surface-tertiary: #f1f1f3;
+
+  /* borders */
+  --border-primary: rgba(0,0,0,0.08);
+  --border-secondary: rgba(0,0,0,0.04);
+
+  /* text */
+  --text-primary: #0f0f10;
+  --text-secondary: #696666;
+  --text-tertiary: #9a9aa1;
+  --text-inverse: #ffffff;
+
+  /* brand */
+  --brand-primary: #8A1C1C;
+  --brand-primary-hover: #a32626;
+  --brand-primary-soft: rgba(138,28,28,0.08);
+  --brand-primary-border: rgba(138,28,28,0.22);
+
+  /* premium subtle gradient (light mode) */
+  --brand-gradient-soft: linear-gradient(
+    180deg,
+    rgba(138,28,28,0.04),
+    rgba(138,28,28,0.01)
+  );
+
+}
+
+
+.theme-dark {
+
+  /* =========================
+     TREBETTA DARK MODE
+  ========================= */
+
+  /* surfaces */
+  --surface-primary: #020202;
+  --surface-secondary: #1a1a1a;
+  --surface-tertiary: #000000;
+
+  /* borders */
+  --border-primary: rgba(255,255,255,0.08);
+  --border-secondary: rgba(255,255,255,0.04);
+
+  /* text */
+  --text-primary: #ffffff;
+  --text-secondary: #ffffff;
+  --text-tertiary: #fbfbff;
+  --text-inverse: #ffffff;
+
+  /* brand */
+  --brand-primary: #8A1C1C;
+  --brand-primary-hover: #b22a2a;
+  --brand-primary-soft: rgba(138,28,28,0.18);
+  --brand-primary-border: rgba(138,28,28,0.35);
+
+  /* premium subtle gradient (dark mode) */
+  --brand-gradient-soft: linear-gradient(
+    180deg,
+    rgba(138,28,28,0.18),
+    rgba(138,28,28,0.03)
+  );
+
+}

@@ -1,0 +1,227 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  animation: slideUp 0.2s ease-out;
+}
+
+.fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.otp-input {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: var(--space-md) 0;
+}
+
+.otp-input input {
+  width: 44px;
+  height: 52px;
+  font-size: 22px;
+  text-align: center;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0 }
+  to { transform: translateY(0); opacity: 1 }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+/* =========================
+   WITHDRAWALS SECTION
+========================= */
+
+.wallet-section {
+  margin-top: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+/* ===== SECTION HEADER (DROPDOWN) ===== */
+.section-header {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-weight: 600;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.section-header:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.section-header svg {
+  transition: transform 0.2s ease;
+}
+
+.section-header svg.rotated {
+  transform: rotate(180deg);
+}
+
+/* ===== SECTION BODY ===== */
+.section-body {
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* =========================
+   WITHDRAWAL ROW
+========================= */
+
+.withdraw-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.withdraw-row:last-child {
+  border-bottom: none;
+}
+
+/* Left side text */
+.withdraw-row strong {
+  font-size: var(--font-size-md);
+}
+
+.withdraw-row .muted {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* Right side */
+.withdraw-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-xs);
+}
+
+/* =========================
+   STATUS BADGES
+========================= */
+
+.withdraw-status {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+/* OTP Pending */
+.withdraw-status.otp_pending {
+  background: rgba(255, 193, 7, 0.12);
+  color: #ffc107;
+}
+
+/* Pending Admin */
+.withdraw-status.pending_admin {
+  background: rgba(13, 110, 253, 0.12);
+  color: #0d6efd;
+}
+
+/* Completed */
+.withdraw-status.completed {
+  background: rgba(25, 135, 84, 0.12);
+  color: #198754;
+}
+
+/* Cancelled / Failed */
+.withdraw-status.cancelled,
+.withdraw-status.failed {
+  background: rgba(220, 53, 69, 0.12);
+  color: #dc3545;
+}
+
+/* =========================
+   CANCEL BUTTON TWEAK
+========================= */
+
+.withdraw-actions .btn {
+  padding: 6px 10px;
+  font-size: var(--font-size-xs);
+}
+/* =========================
+   STATUS BADGE (WITHDRAWALS)
+========================= */
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Awaiting OTP */
+.status-badge.otp_pending {
+  background: rgba(255, 193, 7, 0.12);
+  color: #ffc107;
+}
+
+/* Under review */
+.status-badge.pending_admin {
+  background: rgba(13, 110, 253, 0.12);
+  color: #0d6efd;
+}
+
+/* Completed */
+.status-badge.completed,
+.status-badge.approved {
+  background: rgba(25, 135, 84, 0.12);
+  color: #198754;
+}
+
+/* Cancelled / Failed */
+.status-badge.cancelled,
+.status-badge.rejected,
+.status-badge.failed {
+  background: rgba(220, 53, 69, 0.12);
+  color: #dc3545;
+}
+.success-text {
+  color: var(--color-success);
+  font-size: var(--font-size-sm);
+  text-align: center;
+}
+
+.error-text {
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+  text-align: center;
+}

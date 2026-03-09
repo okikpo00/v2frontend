@@ -1,0 +1,511 @@
+/* =========================
+   SLIP ROOT CONTAINER
+========================= */
+
+.slip-container {
+  position: fixed;
+  bottom: 70px; /* above bottom nav */
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  pointer-events: none; /* only children clickable */
+}
+
+/* =========================
+   COLLAPSED BAR
+========================= */
+
+.slip-collapsed {
+  pointer-events: auto;
+  height: 64px;
+  margin: 0 12px;
+
+  background: var(--surface-primary);
+  color: var(--color-text);
+
+  border: 1px solid var(--border-primary);
+
+  border-radius: 16px;
+  padding: 0 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.slip-collapsed:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.slip-summary-left {
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+.slip-summary-right {
+  font-size: 14px;
+  color: #07ca83;
+  font-weight: 700;
+}
+
+/* =========================
+   DRAWER
+========================= */
+
+.slip-drawer {
+  pointer-events: auto;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 75vh;
+  background: var(--surface-primary);
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow:
+    0 -10px 40px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+.slip-container.expanded .slip-drawer {
+  transform: translateY(0);
+}
+
+/* =========================
+   DRAG HANDLE
+========================= */
+
+.slip-drawer::before {
+  content: "";
+  width: 48px;
+  height: 5px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 10px;
+  margin: 12px auto 8px;
+  display: block;
+}
+
+/* =========================
+   DRAWER HEADER
+========================= */
+
+.slip-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 12px;
+  font-weight: 700;
+  font-size: 15px;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.slip-drawer-header .slip-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.slip-drawer-header .slip-close:hover {
+  opacity: 1;
+}
+
+/* CLEAR BUTTON */
+
+.slip-clear-btn {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: #8A1C1C;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* =========================
+   ENTRY LIST
+========================= */
+
+.slip-entry-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px;
+}
+
+/* Individual entry */
+
+.slip-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.slip-entry:last-child {
+  border-bottom: none;
+}
+
+.slip-entry-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.slip-entry-side {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.slip-entry-side.yes {
+  color: #07ca83;
+}
+
+.slip-entry-side.no {
+  color: #ff3d00;
+}
+
+.slip-entry-odds {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* =========================
+   CONFIRM SECTION
+========================= */
+
+.slip-confirm {
+  padding: 16px 20px 24px;
+  border-top: 1px solid var(--border-primary);
+  background: var(--surface-secondary);
+}
+
+.slip-confirm input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-primary);
+  background: var(--surface-primary);
+  font-size: 14px;
+  margin-bottom: 14px;
+  outline: none;
+}
+
+.slip-summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.slip-summary .payout {
+  color: #07ca83;
+  font-weight: 800;
+}
+
+/* CONFIRM BUTTON */
+
+.confirm-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  background: #8A1C1C;
+  color: white;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.confirm-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(138, 28, 28, 0.4);
+}
+
+.confirm-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================
+   SUCCESS MODAL
+========================= */
+/* =========================
+   SUCCESS OVERLAY
+========================= */
+
+.success-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+/* Wrapper */
+.success-wrapper {
+  width: 92%;
+  max-width: 380px;
+}
+
+/* =========================
+   TICKET DESIGN
+========================= */
+
+.success-ticket {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    #111 0%,
+    #1a1a1a 100%
+  );
+  color: white;
+  padding: 28px 22px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* WATERMARK */
+.ticket-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  font-size: 60px;
+  font-weight: 800;
+  opacity: 0.05;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* HEADER */
+.ticket-header {
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 14px;
+  margin-bottom: 18px;
+  color: #8A1C1C;
+}
+
+/* BODY */
+.ticket-body {
+  font-size: 14px;
+}
+
+.ticket-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.ticket-row span:first-child {
+  opacity: 0.7;
+}
+
+/* Payout */
+.payout-row span:last-child {
+  color: #07ca83;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+/* FOOTER */
+.ticket-footer {
+  margin-top: 18px;
+  font-size: 12px;
+  opacity: 0.6;
+  text-align: center;
+}
+
+/* ACTION BUTTONS */
+
+.success-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+}
+
+.success-actions button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: #8A1C1C;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.success-actions button:hover {
+  transform: translateY(-2px);
+}
+/* HEADER TITLE */
+.slip-header-title {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* HEADER RIGHT SIDE */
+.slip-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* CLEAR BUTTON */
+.slip-clear-btn {
+  background: none;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: #8A1C1C;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.slip-clear-btn:hover {
+  opacity: 0.7;
+}
+
+/* CLOSE BUTTON */
+.slip-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.slip-close:hover {
+  opacity: 1;
+}
+/* =========================
+   DRAW HANDLE CHEVRON
+========================= */
+
+.slip-drawer-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 6px;
+  cursor: pointer;
+}
+
+.chevron {
+  width: 18px;
+  height: 18px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 0.3s ease;
+  opacity: 0.7;
+}
+
+/* When collapsed rotate */
+.slip-container:not(.expanded) .chevron {
+  transform: rotate(135deg);
+}
+
+/* =========================
+   HEADER STRUCTURE
+========================= */
+
+.slip-header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 14px;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.slip-header-title {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* =========================
+   PREMIUM CLOSE BUTTON
+========================= */
+
+.slip-close {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.05);
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.slip-close:hover {
+  background: rgba(0,0,0,0.12);
+  transform: rotate(90deg);
+}
+/* =========================
+   ENTRY ICONS
+========================= */
+
+.entry-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* WON */
+
+.entry-icon--won {
+  color: var(--color-success);
+}
+
+/* LOST */
+
+.entry-icon--lost {
+  color: var(--color-error);
+}
+
+/* VOIDED */
+
+.entry-icon--voided {
+  color: #9aa0a6;
+}
+
+/* OPEN */
+
+.entry-icon--open {
+  color: var(--text-tertiary);
+}
+.slip-error{
+  margin-bottom:8px;
+  padding:8px 10px;
+  border-radius:6px;
+  font-size:13px;
+
+  background:rgba(214,69,69,0.1);
+  color:var(--color-error);
+  border:1px solid rgba(214,69,69,0.25);
+}

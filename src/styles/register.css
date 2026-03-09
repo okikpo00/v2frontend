@@ -1,0 +1,154 @@
+/* =========================
+   REGISTER PAGE WRAPPER
+========================= */
+
+.register-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* =========================
+   HEADER TUNING
+========================= */
+
+.register-page h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.register-page p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-top: -0.25rem;
+}
+
+/* =========================
+   INPUT RHYTHM
+========================= */
+
+.register-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* Slightly taller inputs for onboarding comfort */
+.register-page input {
+  padding: 0.85rem 0.9rem;
+  border-radius: 14px;
+}
+
+/* =========================
+   COUNTRY DISPLAY
+========================= */
+
+.register-page .auth-country {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  padding: 0.75rem 0.9rem;
+  border-radius: 14px;
+
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-border);
+
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.register-page .auth-country .flag {
+  font-size: 1.15rem;
+}
+
+/* =========================
+   PASSWORD FIELDS
+========================= */
+
+.register-page .auth-password {
+  position: relative;
+}
+
+.register-page .eye-btn {
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.65;
+  transition: opacity 120ms ease;
+}
+
+.register-page .eye-btn:hover {
+  opacity: 1;
+}
+
+/* =========================
+   TERMS CHECKBOX (PREMIUM)
+========================= */
+
+.register-page .auth-check {
+  margin-top: 0.4rem;
+  gap: 0.65rem;
+}
+
+.register-page .auth-check span.box {
+  border-radius: 7px;
+}
+
+.register-page .auth-check input:checked + span.box {
+  transform: scale(1.05);
+}
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.register-page button[type="submit"] {
+  margin-top: 0.9rem;
+  padding: 0.95rem 1rem;
+  border-radius: 16px;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* =========================
+   FOOTER LINK
+========================= */
+
+.register-page .auth-footer {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* =========================
+   ENTRY ANIMATION
+========================= */
+
+.register-page {
+  animation: register-enter 180ms ease-out;
+}
+
+@keyframes register-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   MOBILE REFINEMENT
+========================= */
+
+@media (max-width: 480px) {
+  .register-page h2 {
+    font-size: 1.4rem;
+  }
+}

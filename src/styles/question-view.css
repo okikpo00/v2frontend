@@ -1,0 +1,162 @@
+.question-view {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 20px 120px;
+}
+
+/* TOP ROW */
+.qv-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.qv-category {
+  background: #8A1C1C;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.qv-countdown {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.qv-countdown.locked {
+  color: #ff3d00;
+}
+
+/* TITLE */
+.qv-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.35;
+}
+
+/* COMBO SECTION */
+.qv-combo-section {
+  background: linear-gradient(135deg, rgba(255,165,0,0.08), rgba(138,28,28,0.08));
+  border: 1px solid rgba(255,165,0,0.2);
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 24px;
+}
+
+.qv-combo-header {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.qv-combo-sub {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-bottom: 12px;
+}
+
+.qv-combo-list {
+  font-size: 14px;
+}
+
+.qv-combo-item {
+  margin-bottom: 6px;
+}
+
+/* DESCRIPTION */
+.qv-description {
+  background: var(--color-surface, #1a1a1a);
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 26px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* CARDS */
+.qv-card {
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.qv-card:hover {
+  transform: translateY(-3px);
+}
+
+.qv-card.yes {
+  background: rgba(0, 200, 83, 0.08);
+}
+
+.qv-card.no {
+  background: rgba(255, 61, 0, 0.08);
+}
+
+.qv-card.selected {
+  border-color: #8A1C1C;
+  box-shadow: 0 0 20px rgba(138, 28, 28, 0.4);
+}
+
+.qv-card.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.qv-card-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.qv-card-label {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.qv-card-sub {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+.qv-card-odds {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* META */
+.qv-meta {
+  margin-top: 28px;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* STATES */
+.question-view-loading,
+.question-view-error {
+  padding: 60px;
+  text-align: center;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(255,255,255,0.2);
+  border-top: 3px solid #8A1C1C;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

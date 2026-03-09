@@ -1,0 +1,27 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.app-main {
+  flex: 1;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+}
+.app-main {
+  min-height: 100vh;
+  padding-bottom: 64px; /* SAME HEIGHT AS BOTTOM NAV */
+}
+/* Reserve space for bottom nav on mobile */
+@media (max-width: 768px) {
+  .app-main {
+    padding-bottom: 72px;
+  }
+}
+.app-main {
+  padding-bottom: 120px; /* enough space for slip + nav */
+}

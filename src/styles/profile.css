@@ -1,0 +1,154 @@
+/* =========================
+   PROFILE PAGE
+========================= */
+.profile-page {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* =========================
+   IDENTITY CARD
+========================= */
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.profile-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.profile-card h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.profile-card .muted {
+  font-size: var(--font-size-sm);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+.profile-section {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+/* =========================
+   ROWS (SETTINGS / LINKS)
+========================= */
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+
+  padding: 14px var(--space-md);
+  background: var(--color-surface);
+
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+/* icon sizing consistency */
+.row svg {
+  flex-shrink: 0;
+}
+
+/* label takes remaining space */
+.row span {
+  flex: 1;
+}
+
+/* interactive rows */
+button.row {
+  width: 100%;
+  text-align: left;
+  background: var(--color-surface);
+  border: none;
+  cursor: pointer;
+
+  transition: background var(--transition-fast);
+}
+
+button.row:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* danger action (logout) */
+.row.danger {
+  color: var(--color-danger);
+}
+
+/* =========================
+   FOOT NOTE
+========================= */
+.profile-note {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-top: var(--space-md);
+}
+/* Ensure button rows inherit theme text color */
+button.row {
+  color: var(--color-text-primary);
+}
+/* =========================
+   REFERRAL
+========================= */
+.referral-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+}
+
+.copy-btn {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: color var(--transition-fast),
+              opacity var(--transition-fast);
+}
+
+.copy-btn:hover:not(:disabled) {
+  color: var(--color-text-primary);
+}
+
+.copy-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.referral-note {
+  padding: 10px var(--space-md);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+}

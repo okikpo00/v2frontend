@@ -1,0 +1,916 @@
+.live-duels {
+  margin: 24px 0;
+}
+
+.live-duels-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.live-duels-header p {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* =========================================
+   H2H STORY STRIP (Infinite + Swipe)
+========================================= */
+
+.h2h-strip {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 8px 0;
+}
+
+/* scrolling track */
+.h2h-track {
+  display: flex;
+  gap: 16px;
+
+  overflow-x: scroll;
+  scroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+
+  cursor: grab;
+  user-select: none;
+
+  padding: 4px 12px;
+}
+
+/* grabbing state */
+.h2h-track:active {
+  cursor: grabbing;
+}
+
+/* hide scrollbar */
+.h2h-track::-webkit-scrollbar {
+  display: none;
+}
+
+.h2h-track {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+/* =========================================
+   STORY CARD
+========================================= */
+
+.h2h-story-card {
+  flex: 0 0 auto;
+  min-width: 200px;
+  max-width: 220px;
+
+  border-radius: 18px;
+  padding: 18px;
+
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+
+  transition: all 0.25s ease;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle hover lift */
+.h2h-story-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* dark mode hover */
+.dark .h2h-story-card:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.h2h-story-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+/* category */
+.h2h-story-category {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+
+/* =========================================
+   PULSE INDICATOR
+========================================= */
+
+.h2h-story-pulse {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+  background: var(--brand-primary);
+
+  animation: h2hPulse 2.5s infinite;
+}
+
+
+@keyframes h2hPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(138,28,28,0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(138,28,28,0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(138,28,28,0);
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+  .h2h-story-card {
+    min-width: 170px;
+    max-width: 180px;
+    padding: 14px;
+  }
+
+  .h2h-story-title {
+    font-size: 13px;
+  }
+
+}
+
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.h2h-card {
+  min-width: 220px;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.h2h-card:hover {
+  transform: translateY(-3px);
+}
+
+.h2h-card-title {
+  font-weight: 600;
+}
+
+.h2h-card-category {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.join-box {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.join-box input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border-primary);
+}
+
+.join-box button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--brand-primary);
+  color: white;
+  border: none;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background: var(--surface-primary);
+  padding: 24px;
+  border-radius: 18px;
+  width: 90%;
+  max-width: 420px;
+  animation: modalIn 0.2s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.primary-btn {
+  margin-top: 16px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--brand-primary);
+  color: white;
+  border: none;
+  font-weight: 600;
+}
+
+.duel-slip {
+  text-align: center;
+}
+
+.slip-status {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.slip-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.slip-financials div {
+  font-size: 13px;
+  margin: 4px 0;
+}
+
+.slip-code {
+  margin-top: 12px;
+  padding: 10px;
+  background: var(--surface-secondary);
+  border-radius: 12px;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+
+
+/* =========================
+   MODAL BACKDROP
+========================= */
+
+.h2h-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+
+/* =========================
+   MODAL CONTAINER
+========================= */
+
+.h2h-modal {
+  width: 92%;
+  max-width: 420px;
+  background: var(--surface-primary);
+  border-radius: 18px;
+  border: 1px solid var(--border-primary);
+  overflow: hidden;
+  animation: modalPop 0.25s ease;
+}
+
+@keyframes modalPop {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.h2h-modal-header {
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+.h2h-modal-body {
+  padding: 16px;
+}
+
+.h2h-question-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.h2h-question-meta {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-bottom: 10px;
+}
+
+.h2h-question-description {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  background: var(--surface-secondary);
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+
+/* =========================
+   SIDE TOGGLE
+========================= */
+
+.h2h-side-toggle {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.side-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: 1px solid var(--border-primary);
+  background: var(--surface-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.side-btn.yes.active {
+  background: linear-gradient(135deg, #00c853, #00e676);
+  color: #000;
+  border-color: transparent;
+}
+
+.side-btn.no.active {
+  background: linear-gradient(135deg, #d50000, #ff5252);
+  color: #fff;
+  border-color: transparent;
+}
+
+.side-btn:hover {
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   STAKE INPUT
+========================= */
+
+.h2h-stake-input {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.h2h-stake-input label {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.h2h-stake-input input {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border-primary);
+  background: var(--surface-secondary);
+  font-size: 14px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.h2h-modal-footer {
+  padding: 14px 16px;
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid var(--border-primary);
+}
+
+.h2h-primary-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    var(--brand-primary),
+    var(--brand-primary-hover)
+  );
+  color: white;
+  cursor: pointer;
+}
+
+.h2h-primary-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.h2h-secondary-btn {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: transparent;
+  border: 1px solid var(--border-primary);
+  cursor: pointer;
+}
+/* =========================
+   BACKDROP
+========================= */
+
+.duel-slip-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.duel-slip-modal {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.duel-slip-close {
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+/* =========================
+   TICKET
+========================= */
+
+.duel-ticket {
+  width: 100%;
+  background: #0f0f10;
+  color: white;
+  padding: 24px;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* =========================
+   WATERMARK
+========================= */
+
+.duel-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  font-size: 72px;
+  font-weight: 900;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.duel-header {
+  text-align: center;
+  color: #8A1C1C;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.duel-title {
+  font-size: 22px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+/* =========================
+   USERS
+========================= */
+
+.duel-users {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.duel-vs {
+  color: #8A1C1C;
+}
+
+/* =========================
+   PICK
+========================= */
+
+.duel-pick {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pick-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+.pick-badge.yes {
+  background: #0f5f36;
+  color: #00ff88;
+}
+
+.pick-badge.no {
+  background: #5f0f0f;
+  color: #ff4d4d;
+}
+
+/* =========================
+   FINANCIAL BOX
+========================= */
+
+.duel-financial-box {
+  background: #1a1a1a;
+  padding: 18px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.duel-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.duel-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  margin: 12px 0;
+}
+
+.win-amount {
+  color: #00ff88;
+  font-weight: 800;
+}
+
+/* =========================
+   CODE SECTION
+========================= */
+
+.duel-code-section {
+  margin-bottom: 20px;
+}
+
+.duel-code-box {
+  display: flex;
+  justify-content: space-between;
+  background: #121212;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.duel-code-box button {
+  background: #8A1C1C;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.duel-call-text {
+  font-size: 13px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.duel-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.duel-actions button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.duel-footer {
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.5;
+}
+/* COPY BUTTON */
+
+.copy-btn {
+  background: #8A1C1C;
+  border: none;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+/* hover */
+.copy-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(138,28,28,0.4);
+}
+
+/* copied state */
+.copy-btn.copied {
+  background: #0f5f36;
+  color: #00ff88;
+  box-shadow: 0 0 12px rgba(0,255,136,0.6);
+  transform: scale(1.05);
+}
+/* =========================
+   BACKDROP
+========================= */
+
+.duel-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* =========================
+   MODAL CARD
+========================= */
+
+.duel-accept-modal {
+  width: 100%;
+  max-width: 420px;
+  background: #111111;
+  color: white;
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+  animation: modalPop 0.25s ease;
+}
+
+/* subtle entrance */
+@keyframes modalPop {
+  from { transform: scale(0.96); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.accept-header {
+  text-align: center;
+  color: #8A1C1C;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.accept-title {
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.accept-category {
+  text-align: center;
+  opacity: 0.6;
+  margin-bottom: 20px;
+}
+
+/* =========================
+   USERS
+========================= */
+
+.accept-users {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.vs-icon {
+  color: #8A1C1C;
+}
+
+/* =========================
+   PICKS
+========================= */
+
+.accept-picks {
+  background: #1a1a1a;
+  padding: 16px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+}
+
+.pick-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+/* reuse badge from slip */
+.pick-badge {
+  padding: 5px 14px;
+  border-radius: 18px;
+  font-weight: 700;
+}
+
+.pick-badge.yes {
+  background: #0f5f36;
+  color: #00ff88;
+}
+
+.pick-badge.no {
+  background: #5f0f0f;
+  color: #ff4d4d;
+}
+
+/* =========================
+   FINANCIAL BOX
+========================= */
+
+.accept-financial-box {
+  background: #1a1a1a;
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+}
+
+.accept-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.accept-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 12px 0;
+}
+
+.accept-win {
+  color: #00ff88;
+  font-weight: 800;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.accept-primary-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: #8A1C1C;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+}
+
+.accept-primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(138,28,28,0.5);
+}
+
+.accept-cancel-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  background: #222;
+  color: white;
+  cursor: pointer;
+}
+/* =========================
+   PICKS SECTION
+========================= */
+
+.duel-picks {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pick-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* existing badge styles already apply */
+.h2h-empty {
+  padding: 28px 16px;
+  text-align: center;
+}
+
+.h2h-empty-title {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.h2h-empty-sub {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}

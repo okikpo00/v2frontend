@@ -1,0 +1,98 @@
+.btn {
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  transition: background var(--transition-fast),
+              opacity var(--transition-fast);
+}
+
+.btn-primary {
+  background: var(--color-brand);
+  color: #ffffff;
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+}
+/* =========================
+   INPUTS — THEME SAFE
+========================= */
+
+input,
+textarea {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+/* Placeholder — faint but visible */
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+/* Focus state — clear in dark & light */
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 2px rgba(138, 28, 28, 0.25);
+}
+
+/* =========================
+   OTP INPUT (EXPLICIT)
+========================= */
+.otp-input {
+  text-align: center;
+  letter-spacing: 0.3em;
+  font-weight: 600;
+  font-size: 18px;
+}
+/* =========================
+   TOOLTIP CONTAINER
+========================= */
+.tooltip-wrapper {
+
+  position: relative;
+
+  display: inline-flex;
+
+}
+
+
+.tooltip-box {
+
+  position: absolute;
+
+  bottom: 120%;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background: #111;
+
+  color: #fff;
+
+  font-size: 12px;
+
+  padding: 6px 10px;
+
+  border-radius: 6px;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+
+  z-index: 999;
+
+}

@@ -1,0 +1,313 @@
+/* =========================
+   DETAILS PAGE
+========================= */
+
+.details-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+/* =========================
+   SUMMARY CARD
+========================= */
+
+.details-summary {
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+/* STATUS COLORS */
+
+.summary--open {
+  border-left: 4px solid var(--brand-primary);
+}
+
+.summary--won {
+  border-left: 4px solid var(--color-success);
+}
+
+.summary--lost {
+  border-left: 4px solid var(--color-error);
+}
+
+/* HEADER */
+
+.summary-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.summary-status {
+  font-weight: 700;
+  font-size: var(--font-size-md);
+}
+
+.summary-date {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+}
+
+/* GRID */
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.summary-grid label {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+}
+
+.summary-grid strong {
+  font-size: var(--font-size-md);
+  color: var(--text-primary);
+}
+
+/* POTENTIAL / PAYOUT BAR */
+
+.summary-payout-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: var(--space-md);
+
+  border-radius: var(--radius-md);
+
+  font-weight: 600;
+}
+
+.summary-payout-bar.potential {
+  background: linear-gradient(
+    90deg,
+    rgba(31,157,85,0.15),
+    rgba(31,157,85,0.05)
+  );
+
+  border: 1px solid rgba(31,157,85,0.25);
+
+  color: var(--color-success);
+}
+
+.summary-payout-bar.payout {
+  background: linear-gradient(
+    90deg,
+    rgba(31,157,85,0.25),
+    rgba(31,157,85,0.08)
+  );
+
+  border: 1px solid rgba(31,157,85,0.35);
+
+  color: var(--color-success);
+}
+
+/* =========================
+   ENTRIES
+========================= */
+
+.entries-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+
+  padding: var(--space-md);
+
+  transition: transform var(--transition-fast);
+}
+
+.entry:hover {
+  transform: translateY(-2px);
+}
+
+.entry-left {
+  max-width: 85%;
+}
+
+.entry-title {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.entry-meta {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+}
+
+/* RESULT ICON */
+
+.entry-result {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* STATUS COLORS */
+
+.entry--won .entry-result {
+  color: var(--color-success);
+}
+
+.entry--lost .entry-result {
+  color: var(--color-error);
+}
+
+.entry--open .entry-result {
+  color: var(--brand-primary);
+}
+/* ===== DUEL BATTLE ===== */
+
+.duel-battle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--brand-gradient-soft);
+  border: 1px solid var(--brand-primary-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+.battle-side {
+  flex: 1;
+  text-align: center;
+}
+
+.battle-side.you {
+  border: 1px solid var(--brand-primary-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+}
+
+.battle-username {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.battle-choice {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--brand-primary);
+}
+
+.battle-vs {
+  padding: 0 var(--space-md);
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+.duel-battle-card {
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.duel-title {
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+}
+
+.duel-battle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.battle-side {
+  text-align: center;
+  flex: 1;
+}
+
+.battle-you {
+  border: 2px solid var(--brand-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+}
+
+.battle-username {
+  font-weight: 600;
+}
+
+.battle-choice {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+.battle-vs {
+  padding: 0 var(--space-md);
+  font-weight: 700;
+}
+
+.battle-you-label {
+  font-size: var(--font-size-xs);
+  color: var(--brand-primary);
+  margin-top: 4px;
+}
+.duel-cancel-btn {
+  margin-top: var(--space-md);
+  width: 100%;
+  padding: 12px;
+
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-error);
+
+  background: transparent;
+  color: var(--color-error);
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: var(--transition-fast);
+}
+
+.duel-cancel-btn:hover {
+  background: var(--color-error);
+  color: var(--text-inverse);
+}
+/* VOIDED NOTICE */
+
+.voided-note{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+
+  background: var(--surface-secondary);
+  border:1px solid var(--border-primary);
+
+  padding:12px;
+  border-radius: var(--radius-md);
+
+  margin-bottom:16px;
+
+  font-size:14px;
+  color: var(--text-secondary);
+}
+
+.voided-note-icon{
+  font-size:16px;
+  line-height:1;
+}
+
+.voided-note strong{
+  color: var(--text-primary);
+}

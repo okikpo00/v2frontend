@@ -1,0 +1,114 @@
+/* =========================
+   NOTIFICATIONS PAGE
+========================= */
+
+.notifications-page{
+  max-width:720px;
+  margin:0 auto;
+  padding:var(--space-md);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* =========================
+   NOTIFICATION ITEM
+========================= */
+
+.notification-item{
+  padding:14px 16px;
+  border-radius:var(--radius-md);
+  border:1px solid var(--border-primary);
+  background:var(--surface-secondary);
+  cursor:pointer;
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast),
+    border var(--transition-fast);
+}
+
+/* HOVER */
+
+.notification-item:hover{
+  transform:translateY(-1px);
+  border-color:var(--brand-primary-border);
+}
+
+/* UNREAD */
+
+.notification-item.unread{
+  background:var(--brand-primary-soft);
+  border-color:var(--brand-primary-border);
+  position:relative;
+}
+
+/* unread indicator dot */
+
+.notification-item.unread::before{
+  content:"";
+  position:absolute;
+  top:16px;
+  left:-6px;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--brand-primary);
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.notification-title{
+  font-weight:600;
+  font-size:14px;
+  color:var(--text-primary);
+  margin-bottom:4px;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.notification-message{
+  font-size:13px;
+  color:var(--text-secondary);
+  line-height:1.4;
+}
+
+/* =========================
+   TIME
+========================= */
+
+.notification-time{
+  margin-top:6px;
+  font-size:11px;
+  color:var(--text-tertiary);
+}
+
+/* =========================
+   BELL BADGE
+========================= */
+
+.notification-badge{
+  position:absolute;
+  top:-4px;
+  right:-6px;
+
+  min-width:18px;
+  height:18px;
+
+  padding:0 5px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:11px;
+  font-weight:600;
+
+  color:white;
+  background:var(--color-error);
+
+  border-radius:999px;
+}

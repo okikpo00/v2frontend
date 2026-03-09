@@ -1,0 +1,242 @@
+/* ========================================
+   INFO PAGES LAYOUT
+======================================== */
+
+.info-page{
+
+  max-width:780px;
+  margin:auto;
+
+  padding:48px 20px 64px;
+
+  line-height:1.75;
+
+}
+
+/* ========================================
+   PAGE TITLE
+======================================== */
+
+.info-page h1{
+
+  font-size:34px;
+  font-weight:700;
+
+  letter-spacing:-0.4px;
+
+  margin-bottom:32px;
+
+  color:var(--text-primary);
+
+}
+
+/* ========================================
+   SECTION BLOCK
+======================================== */
+
+.info-section{
+
+  margin-bottom:42px;
+
+}
+
+.info-section h2{
+
+  font-size:22px;
+  font-weight:650;
+
+  margin-bottom:14px;
+
+  letter-spacing:-0.2px;
+
+  color:var(--text-primary);
+
+}
+
+.info-section p{
+
+  font-size:15px;
+
+  margin-bottom:14px;
+
+  color:var(--text-secondary);
+
+}
+
+/* ========================================
+   LISTS
+======================================== */
+
+.info-section ul{
+
+  margin-top:8px;
+  margin-bottom:16px;
+
+  padding-left:20px;
+
+}
+
+.info-section li{
+
+  font-size:15px;
+
+  margin-bottom:8px;
+
+  color:var(--text-secondary);
+
+}
+
+/* ========================================
+   FAQ SECTION
+======================================== */
+
+.faq-item{
+
+  border:1px solid var(--border-primary);
+
+  border-radius:12px;
+
+  padding:18px 20px;
+
+  margin-bottom:14px;
+
+  background:var(--surface-secondary);
+
+  transition:all 0.2s ease;
+
+}
+
+.faq-item:hover{
+
+  border-color:var(--brand-primary-border);
+
+  transform:translateY(-1px);
+
+}
+
+.faq-item h3{
+
+  font-size:16px;
+  font-weight:600;
+
+  margin-bottom:6px;
+
+  color:var(--text-primary);
+
+}
+
+.faq-item p{
+
+  font-size:14px;
+
+  color:var(--text-secondary);
+
+  line-height:1.6;
+
+}
+
+/* ========================================
+   SUPPORT BOX
+======================================== */
+
+.support-box{
+
+  border-radius:14px;
+
+  padding:26px;
+
+  border:1px solid var(--brand-primary-border);
+
+  background:linear-gradient(
+    180deg,
+    var(--brand-primary-soft),
+    rgba(255,255,255,0)
+  );
+
+}
+
+.support-box h2{
+
+  font-size:20px;
+
+  margin-bottom:10px;
+
+}
+
+.support-box p{
+
+  font-size:15px;
+
+  margin-bottom:12px;
+
+}
+
+/* ========================================
+   WHATSAPP BUTTON
+======================================== */
+
+.support-whatsapp{
+
+  display:inline-block;
+
+  margin-top:14px;
+
+  padding:12px 20px;
+
+  border-radius:10px;
+
+  background:#25D366;
+
+  color:white;
+
+  font-weight:600;
+
+  font-size:14px;
+
+  text-decoration:none;
+
+  transition:all 0.2s ease;
+
+}
+
+.support-whatsapp:hover{
+
+  transform:translateY(-1px);
+
+  box-shadow:0 6px 14px rgba(0,0,0,0.12);
+
+}
+
+/* ========================================
+   SUPPORT NOTE
+======================================== */
+
+.support-note{
+
+  margin-top:10px;
+
+  font-size:13px;
+
+  color:var(--text-tertiary);
+
+}
+
+/* ========================================
+   MOBILE OPTIMIZATION
+======================================== */
+
+@media (max-width:640px){
+
+  .info-page{
+    padding:36px 18px 54px;
+  }
+
+  .info-page h1{
+    font-size:28px;
+  }
+
+  .info-section h2{
+    font-size:20px;
+  }
+
+}
