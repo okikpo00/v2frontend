@@ -22,6 +22,8 @@ export default function PaymentComplete() {
       return;
     }
 
+    const numericTransactionId = Number(transaction_id);
+
     let slowTimer = setTimeout(() => {
       setMessage("Still confirming your payment with the bank...");
     }, 3000);
@@ -32,7 +34,7 @@ export default function PaymentComplete() {
 
         await api.post("/wallet/payments/flutterwave/verify", {
           tx_ref,
-          transaction_id
+          transaction_id: numericTransactionId
         });
 
         clearTimeout(slowTimer);
@@ -49,7 +51,6 @@ export default function PaymentComplete() {
         clearTimeout(slowTimer);
 
         setStatus("error");
-
         setMessage(
           "We could not confirm your payment. If funds were deducted, please contact support."
         );
