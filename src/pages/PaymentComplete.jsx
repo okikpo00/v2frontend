@@ -30,7 +30,7 @@ export default function PaymentComplete() {
 
       try {
 
-        await api.post("/payments/flutterwave/verify", {
+        await api.post("/wallet/payments/flutterwave/verify", {
           tx_ref,
           transaction_id
         });
