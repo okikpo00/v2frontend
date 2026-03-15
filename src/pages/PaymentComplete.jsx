@@ -22,9 +22,7 @@ export default function PaymentComplete() {
       return;
     }
 
-    const numericTransactionId = Number(transaction_id);
-
-    let slowTimer = setTimeout(() => {
+    const slowTimer = setTimeout(() => {
       setMessage("Still confirming your payment with the bank...");
     }, 3000);
 
@@ -34,7 +32,7 @@ export default function PaymentComplete() {
 
         await api.post("/wallet/payments/flutterwave/verify", {
           tx_ref,
-          transaction_id: numericTransactionId
+          transaction_id
         });
 
         clearTimeout(slowTimer);
@@ -60,6 +58,8 @@ export default function PaymentComplete() {
     }
 
     verify();
+
+    return () => clearTimeout(slowTimer);
 
   }, [params, navigate]);
 
