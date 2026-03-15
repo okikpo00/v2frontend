@@ -294,3 +294,36 @@
     padding-top: 14vh;
   }
 }
+
+.verify-resend{
+
+  margin-top:10px;
+
+}
+
+.resend-btn{
+
+  background:none;
+  border:none;
+
+  color:var(--brand-primary);
+
+  font-weight:600;
+
+  cursor:pointer;
+
+}
+
+.resend-btn:hover{
+  text-decoration:underline;
+}
+
+.resend-msg{
+
+  font-size:13px;
+
+  margin-top:6px;
+
+  color:var(--text-secondary);
+
+}

@@ -1,0 +1,14 @@
+.payment-complete-page{
+  max-width:520px;
+  margin:120px auto;
+  text-align:center;
+}
+
+.payment-complete-page h2{
+  font-size:24px;
+  margin-bottom:12px;
+}
+
+.payment-complete-page p{
+  color:var(--text-secondary);
+}

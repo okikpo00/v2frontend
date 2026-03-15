@@ -27,6 +27,8 @@ import NotificationsPage from "./pages/notifications/NotificationsPage";
 import HowItWorks from "./pages/HowItWorks";
 import Support from "./pages/Support";
 import Terms from "./pages/Terms";
+import PaymentComplete from "./pages/PaymentComplete";
+
 const router = createBrowserRouter([
   /* =========================
      AUTH ROUTES (NO TOPBAR)
@@ -65,6 +67,9 @@ const router = createBrowserRouter([
 
     
       { path: "arena", element: <Arena /> },
+  
+    
+
 
       /* 🔒 PROTECTED */
       {
@@ -75,6 +80,7 @@ const router = createBrowserRouter([
           { path: "calls", element: <Calls /> },
 { path: "/slip/:uuid", element: <SlipDetails /> },
     { path: "/duel/:uuid", element: <DuelDetails /> },
+      { path: "/payment-complete", element: <PaymentComplete /> },
   {
   path: "/notifications",
   element: <NotificationsPage />

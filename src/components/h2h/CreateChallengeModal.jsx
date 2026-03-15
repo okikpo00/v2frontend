@@ -19,8 +19,7 @@ const { refreshUser } = useAuth();
   async function handleCreate() {
 
     setError("");
-
-    const value = Number(stake);
+const value = Math.floor(Number(stake));
 
     /* SIMPLE VALIDATION */
 
@@ -57,13 +56,34 @@ const { refreshUser } = useAuth();
 refreshUser();
     } catch (err) {
 
-      setError(
-        err?.response?.data?.error ||
-        err?.response?.data?.message ||
-        "Unable to create challenge"
-      );
+  const code = err?.response?.data?.code;
+  const message = err?.response?.data?.message;
 
-    } finally {
+  if (code === "INSUFFICIENT_BALANCE") {
+    setError("Insufficient wallet balance");
+  }
+
+  else if (code === "STAKE_BELOW_MINIMUM") {
+    setError(`Stake below minimum ₦${MIN_STAKE}`);
+  }
+
+  else if (code === "STAKE_ABOVE_MAXIMUM") {
+    setError(`Stake above maximum ₦${MAX_STAKE}`);
+  }
+
+  else if (code === "QUESTION_LOCKED") {
+    setError("This question is already locked");
+  }
+
+  else if (message) {
+    setError(message);
+  }
+
+  else {
+    setError("Unable to create challenge");
+  }
+
+} finally {
       setLoading(false);
     }
   }

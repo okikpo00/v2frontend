@@ -7,57 +7,83 @@ export default function QuestionCard({ q }) {
   const navigate = useNavigate();
   const { entries, addSelection } = useSlip();
 
-  const selected = entries.find(
-    e => e.question_id === q.id
-  );
+  const selected = entries.find(e => e.question_id === q.id);
 
   const [remaining, setRemaining] = useState(null);
 
+  /* =========================
+     COUNTDOWN
+  ========================= */
+
   useEffect(() => {
-    if (!q.closes_at_unix || !q.server_time)
-      return;
 
-    const startRemaining =
-      q.closes_at_unix * 1000 -
-      new Date(q.server_time).getTime();
+    if (!q.closes_at_unix) return;
 
-    const startClient = Date.now();
+    const lockTime = Number(q.closes_at_unix) * 1000;
 
-    const interval = setInterval(() => {
-      const elapsed = Date.now() - startClient;
-      setRemaining(startRemaining - elapsed);
-    }, 1000);
+    function update() {
+      const diff = lockTime - Date.now();
+      setRemaining(diff);
+    }
+
+    update();
+
+    const interval = setInterval(update, 1000);
 
     return () => clearInterval(interval);
 
-  }, [q.closes_at_unix, q.server_time]);
+  }, [q.closes_at_unix]);
 
-  const closed = remaining <= 0;
+  /* =========================
+     LOCK STATE
+  ========================= */
+
+  const locked =
+    q.status === "locked" ||
+    q.status === "settled" ||
+    (remaining !== null && remaining <= 0);
+
+  /* =========================
+     SELECTION
+  ========================= */
 
   function handleSelect(side) {
-    if (closed) return;
+    if (locked) return;
     addSelection(q, side);
   }
 
+  /* =========================
+     COUNTDOWN FORMAT
+  ========================= */
+
   function formatCountdown(ms) {
-    if (!ms || ms <= 0) return "Closed";
+
+    if (ms === null || Number.isNaN(ms)) return "...";
+
+    if (ms <= 0) return "LOCKED";
+
     const total = Math.floor(ms / 1000);
+
     const h = Math.floor((total % 86400) / 3600);
     const m = Math.floor((total % 3600) / 60);
+
     return `${h}h ${m}m`;
   }
 
   return (
-    <div className={`question-card ${selected ? "selected" : ""}`}>
+
+    <div className={`question-card ${selected ? "selected" : ""} ${locked ? "locked" : ""}`}>
 
       <div className="question-header">
+
         <div className="question-title">
           {q.title}
         </div>
 
-        <div className={`countdown ${closed ? "closed" : ""}`}>
+        <div className={`countdown ${locked ? "locked" : ""}`}>
           {formatCountdown(remaining)}
         </div>
+
       </div>
 
       <div className="question-actions">
@@ -65,7 +91,7 @@ export default function QuestionCard({ q }) {
         <button
           className={`yes-btn ${selected?.side === "yes" ? "active" : ""}`}
           onClick={() => handleSelect("yes")}
-          disabled={closed}
+          disabled={locked}
         >
           YES <strong>{Number(q.yes_odds).toFixed(2)}</strong>
         </button>
@@ -73,7 +99,7 @@ export default function QuestionCard({ q }) {
         <button
           className={`no-btn ${selected?.side === "no" ? "active" : ""}`}
           onClick={() => handleSelect("no")}
-          disabled={closed}
+          disabled={locked}
         >
           NO <strong>{Number(q.no_odds).toFixed(2)}</strong>
         </button>
@@ -88,5 +114,6 @@ export default function QuestionCard({ q }) {
       </div>
 
     </div>
+
   );
 }

@@ -399,3 +399,90 @@
   font-size: 13px;
   color: var(--text-tertiary);
 }
+/* =========================
+   WALLET SECTIONS
+========================= */
+
+.wallet-section{
+  border-bottom:1px solid var(--border-primary);
+  padding:10px 0;
+}
+
+.wallet-section-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+  padding:12px 0;
+}
+
+.wallet-section-header h3{
+  font-size:16px;
+  font-weight:600;
+}
+
+/* collapse arrow */
+
+.wallet-collapse-icon{
+  font-size:14px;
+  transition:transform .2s ease;
+}
+
+.wallet-collapse-icon.open{
+  transform:rotate(180deg);
+}
+
+/* body */
+
+.wallet-section-body{
+  padding-top:10px;
+}
+
+/* empty */
+
+.wallet-empty{
+  font-size:14px;
+  color:var(--text-secondary);
+  padding:10px 0;
+}
+
+/* =========================
+   DEPOSIT GUIDE
+========================= */
+
+.deposit-modal{
+  max-width:420px;
+}
+
+.deposit-guide{
+  background:var(--surface-secondary);
+  border:1px solid var(--border-primary);
+  border-radius:10px;
+  padding:14px 16px;
+  margin-bottom:16px;
+}
+
+.deposit-guide-title{
+  font-weight:600;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.deposit-guide ol{
+  padding-left:18px;
+  margin:0;
+}
+
+.deposit-guide li{
+  font-size:13px;
+  color:var(--text-secondary);
+  margin-bottom:6px;
+  line-height:1.5;
+}
+
+.deposit-note{
+  display:block;
+  font-size:12px;
+  margin-top:4px;
+  color:var(--text-tertiary);
+}

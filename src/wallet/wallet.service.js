@@ -14,8 +14,8 @@ const walletService = {
     return api.post("/wallet/deposit/init", { amount });
   },
 
-    listDeposit({ cursor = null } = {}) {
-    return api.get("/wallet/deposits", {
+    listDeposits({ cursor = null } = {}) {
+    return api.get("/wallet/deposit", {
       params: cursor ? { cursor } : {}
     });
   },

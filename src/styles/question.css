@@ -103,3 +103,22 @@
 .empty-state--duel {
   padding: var(--space-lg) 0;
 }
+/* LOCKED STATE */
+
+.countdown.locked {
+  font-weight: 600;
+  color: var(--text-tertiary);
+}
+
+/* Locked question visual */
+
+.question-card.locked {
+  opacity: 0.85;
+}
+
+/* Disabled buttons styling */
+
+.question-card button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

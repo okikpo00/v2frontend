@@ -8,7 +8,7 @@ export default function AcceptChallengeModal({
 }) {
 
   const [loading, setLoading] = useState(false);
-
+const [error, setError] = useState("");
   if (!challenge) return null;
 
   const {
@@ -30,7 +30,7 @@ export default function AcceptChallengeModal({
 
 const { refreshUser } = useAuth();
   async function handleAccept() {
-
+setError("");
     try {
 
       setLoading(true);
@@ -47,12 +47,35 @@ const { refreshUser } = useAuth();
 refreshUser();
     } catch (err) {
 
-      alert(
-        err?.response?.data?.message ||
-        "Unable to accept challenge"
-      );
+  const status = err?.response?.status;
+  const code = err?.response?.data?.code;
+  const message = err?.response?.data?.message;
 
-    } finally {
+  if (status === 409 || code === "INSUFFICIENT_BALANCE") {
+    setError("Insufficient wallet balance");
+  }
+
+  else if (status === 409 || code === "CHALLENGE_ALREADY_ACCEPTED") {
+    setError("This duel has already been accepted");
+  }
+
+  else if (status === 409 || code === "CHALLENGE_EXPIRED") {
+    setError("This duel has expired");
+  }
+
+  else if (status === 400 || code === "INVALID_INVITE_CODE") {
+    setError("Invalid duel code");
+  }
+
+  else if (message) {
+    setError(message);
+  }
+
+  else {
+    setError("Unable to accept challenge");
+  }
+
+} finally {
 
       setLoading(false);
 
@@ -135,6 +158,11 @@ refreshUser();
         </div>
 
         {/* CTA */}
+        {error && (
+  <div className="form-error">
+    {error}
+  </div>
+)}
         <button
           className="accept-primary-btn"
           disabled={loading}

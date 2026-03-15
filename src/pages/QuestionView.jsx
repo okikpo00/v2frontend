@@ -5,18 +5,22 @@ import { useSlip } from "../context/SlipContext";
 import "../styles/question-view.css";
 
 function formatCountdown(ms) {
-  if (!ms || ms <= 0) return "Locked";
+
+  if (ms === null) return "...";
+
+  if (ms <= 0) return "LOCKED";
 
   const totalSeconds = Math.floor(ms / 1000);
+
   const days = Math.floor(totalSeconds / 86400);
   const hours = Math.floor((totalSeconds % 86400) / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
 
   if (days > 0) return `${days}d ${hours}h`;
   if (hours > 0) return `${hours}h ${minutes}m`;
+
   return `${minutes}m`;
 }
-
 export default function QuestionView() {
   const { uuid } = useParams();
 
@@ -55,22 +59,40 @@ export default function QuestionView() {
   /* =========================
      COUNTDOWN
   ========================= */
-  useEffect(() => {
-    if (!question?.lock_time) return;
+ useEffect(() => {
 
-    const lockMs = new Date(question.lock_time).getTime();
+  if (
+    question?.status !== "published" ||
+    !question?.closes_at_unix ||
+    !question?.server_time
+  ) return;
 
-    const interval = setInterval(() => {
-      const diff = lockMs - Date.now();
-      setRemaining(diff);
-    }, 1000);
+  const startRemaining =
+    question.closes_at_unix * 1000 -
+    question.server_time * 1000;
 
-    return () => clearInterval(interval);
-  }, [question]);
+  const startClient = Date.now();
 
-  const locked =
-    question?.status !== "published" || remaining <= 0;
+  const interval = setInterval(() => {
 
+    const elapsed = Date.now() - startClient;
+
+    setRemaining(startRemaining - elapsed);
+
+  }, 1000);
+
+  return () => clearInterval(interval);
+
+}, [
+  question?.status,
+  question?.closes_at_unix,
+  question?.server_time
+]);
+
+const locked =
+  question?.status === "locked" ||
+  question?.status === "settled" ||
+  (remaining !== null && remaining <= 0);
   /* =========================
      SLIP SYNC
   ========================= */

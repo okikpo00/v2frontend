@@ -17,8 +17,6 @@ export default function DepositModal({ open, onClose }) {
 
     const value = Number(amount);
 
-    /* FRONTEND VALIDATION */
-
     if (!value) {
       setError("Enter a deposit amount");
       return;
@@ -58,9 +56,50 @@ export default function DepositModal({ open, onClose }) {
 
     <div className="modal-backdrop">
 
-      <div className="modal">
+      <div className="modal deposit-modal">
 
-        <h3>Fund wallet</h3>
+        <h3>Fund Wallet</h3>
+
+        {/* INSTRUCTIONS */}
+
+        <div className="deposit-guide">
+
+          <p className="deposit-guide-title">
+            How to deposit
+          </p>
+
+          <ol>
+
+            <li>
+              Enter the amount you want to deposit.
+            </li>
+
+            <li>
+              Click <strong>Continue</strong>. You will be redirected to the secure Flutterwave payment page.
+            </li>
+
+            <li>
+              On the payment page you can deposit using <strong>card, bank transfer, USSD, or other methods</strong>.
+            </li>
+
+            <li>
+              If you don’t see your preferred option, click <strong>"Change payment method"</strong> to view more options.
+            </li>
+
+            <li>
+              If you choose <strong>bank transfer</strong>, the account name may appear as:
+              <strong> Trebetta Wallet</strong> or
+              <strong> Horizon Blue Bliss Global</strong>.  
+              <span className="deposit-note">
+                Both names are correct and safe.
+              </span>
+            </li>
+
+          </ol>
+
+        </div>
+
+        {/* INPUT */}
 
         <input
           type="number"
@@ -77,6 +116,8 @@ export default function DepositModal({ open, onClose }) {
             {error}
           </div>
         )}
+
+        {/* CTA */}
 
         <button
           className="btn btn-primary"

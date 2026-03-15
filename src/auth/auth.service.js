@@ -37,8 +37,8 @@ const authService = {
     return api.post("/auth/send-verify-email", { email });
   },
 
-  async forgotPassword(email) {
-    return api.post("/auth/forgot-password", { email });
+  async forgotPassword(data) {
+    return api.post("/auth/forgot-password",  data );
   },
 
   async resetPassword(payload) {
