@@ -14,52 +14,72 @@ export default function PaymentComplete() {
   useEffect(() => {
 
     const tx_ref = params.get("tx_ref");
-    const transaction_id = params.get("transaction_id");
 
-    if (!tx_ref || !transaction_id) {
+    if (!tx_ref) {
       setStatus("error");
       setMessage("Invalid payment response.");
       return;
     }
 
-    const slowTimer = setTimeout(() => {
-      setMessage("Still confirming your payment with the bank...");
-    }, 3000);
+    let pollInterval;
+    let slowTimer;
+    let timeoutStop;
 
-    async function verify() {
+    async function checkDeposit() {
 
       try {
 
-        await api.post("/wallet/payments/flutterwave/verify", {
-          tx_ref,
-          transaction_id
-        });
+        const res = await api.get("/wallet/deposit");
 
-        clearTimeout(slowTimer);
+        const deposits = res?.data?.data?.items || [];
 
-        setStatus("success");
-        setMessage("Deposit successful. Your wallet has been credited.");
+        const match = deposits.find(d => d.tx_ref === tx_ref);
 
-        setTimeout(() => {
-          navigate("/wallet");
-        }, 2000);
+        if (match && match.status === "completed") {
 
-      } catch (err) {
+          clearInterval(pollInterval);
+          clearTimeout(slowTimer);
+          clearTimeout(timeoutStop);
 
-        clearTimeout(slowTimer);
+          setStatus("success");
+          setMessage("Deposit successful. Your wallet has been credited.");
 
-        setStatus("error");
-        setMessage(
-          "We could not confirm your payment. If funds were deducted, please contact support."
-        );
+          setTimeout(() => {
+            navigate("/wallet");
+          }, 2000);
 
+        }
+
+      } catch {
+        // silent fail
       }
 
     }
 
-    verify();
+    slowTimer = setTimeout(() => {
+      setMessage("Still confirming your payment with the bank...");
+    }, 3000);
 
-    return () => clearTimeout(slowTimer);
+    pollInterval = setInterval(checkDeposit, 4000);
+
+    timeoutStop = setTimeout(() => {
+
+      clearInterval(pollInterval);
+
+      setStatus("waiting");
+      setMessage(
+        "Your payment is being confirmed. If your bank was debited, your wallet will update shortly."
+      );
+
+    }, 60000);
+
+    checkDeposit();
+
+    return () => {
+      clearInterval(pollInterval);
+      clearTimeout(slowTimer);
+      clearTimeout(timeoutStop);
+    };
 
   }, [params, navigate]);
 
@@ -68,24 +88,63 @@ export default function PaymentComplete() {
     <div className="payment-complete-page">
 
       {status === "loading" && (
-        <>
+        <div className="payment-card">
+
+          <div className="payment-spinner" />
+
           <h2>Processing Payment</h2>
+
           <p>{message}</p>
-        </>
+
+        </div>
       )}
 
       {status === "success" && (
-        <>
+        <div className="payment-card success">
+
+          <div className="payment-check">✓</div>
+
           <h2>Deposit Successful</h2>
+
           <p>{message}</p>
-        </>
+
+        </div>
+      )}
+
+      {status === "waiting" && (
+        <div className="payment-card">
+
+          <div className="payment-spinner" />
+
+          <h2>Payment Received</h2>
+
+          <p>{message}</p>
+
+          <button
+            className="btn btn-primary"
+            onClick={() => navigate("/wallet")}
+          >
+            Go to Wallet
+          </button>
+
+        </div>
       )}
 
       {status === "error" && (
-        <>
-          <h2>Payment Verification Failed</h2>
+        <div className="payment-card error">
+
+          <h2>Payment Processing</h2>
+
           <p>{message}</p>
-        </>
+
+          <button
+            className="btn btn-primary"
+            onClick={() => navigate("/wallet")}
+          >
+            Go to Wallet
+          </button>
+
+        </div>
       )}
 
     </div>
