@@ -2,12 +2,67 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- PNG Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+    <!-- Apple Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#8A1C1C" />
+
+    <!-- SEO Meta Tags -->
+    <title>Trebetta — Today's Trend, Your Call.</title>
+
+    <meta
+      name="description"
+      content="Trebetta is a curated prediction platform where users pick sides on sports, finance, entertainment, politics, and other trending events."
+    />
+
+    <!-- Open Graph (Social Sharing) -->
+    <meta property="og:title" content="Trebetta — Today's Trend, Your Call." />
+    <meta
+      property="og:description"
+      content="Pick a side on today's biggest questions across sports, finance, entertainment, politics, and trending events."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://trebetta.com" />
+    <meta property="og:image" content="https://trebetta.com/social-preview.png" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>user_frontend</title>
+
+    <!-- Splash Loader Style -->
+    <style>
+      #app-loader {
+        position: fixed;
+        inset: 0;
+        background: #0B0B0B;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+    </style>
   </head>
+
   <body>
+
+    <!-- Trebetta Splash Loader -->
+    <div id="app-loader">
+      <img src="/trebetta-icon-1024.png" alt="Trebetta" width="80" />
+    </div>
+
     <div id="root"></div>
+
     <script type="module" src="/src/main.jsx"></script>
+
   </body>
 </html>

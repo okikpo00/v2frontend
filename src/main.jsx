@@ -35,3 +35,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </AuthProvider>
   </React.StrictMode>
 );
+const loader = document.getElementById("app-loader");
+if (loader) loader.remove();
