@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
     const data = res.data.data;
 
     setUser(data);
-    setBalance(data.wallet?.available_balance || 0);
+   setBalance(data.wallet?.balance || 0);
   };
 
   /* =========================
@@ -79,13 +79,7 @@ export function AuthProvider({ children }) {
     }
   };
 
-  /* =========================
-     BALANCE SYNC (OPTIONAL)
-  ========================= */
-
-  const updateBalance = (delta) => {
-    setBalance((b) => Number(b) + Number(delta));
-  };
+  
 
   /* =========================
      ACTIONS
@@ -126,7 +120,7 @@ export function AuthProvider({ children }) {
         login,
         logout,
 
-        updateBalance,
+        
         refreshUser // ✅ NEW
       }}
     >
